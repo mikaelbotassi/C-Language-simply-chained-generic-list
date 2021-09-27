@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "lista.h"
 #ifndef _PEOPLE_H
 #define _PEOPLE_H
@@ -17,4 +20,4 @@ void peopleSearch(list *l);
 int compareAges(int age, void * elem, char id);
 void printPeople(char id, void *elem);
 
-#endif;
+#endif

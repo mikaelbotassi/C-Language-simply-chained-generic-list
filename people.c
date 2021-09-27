@@ -1,23 +1,23 @@
-#include "people.h";
+#include "people.h"
 
 void peopleInitialized(people *p){
     p=(people *)malloc(sizeof(people));
     p->age=0;
     p->feet=0.0;
     p->height=0.0;
-    p->name[0]="\0";
+    strcpy(p->name, "\0");
 }
 
 void peopleData(list * l){
     people * p;
     peopleInitialized(p);
     printf("Digite o nome da pessoa: ");
-    scanf("%s", &p->name);
+    scanf(" %50[^\n]", &p->name);
     printf("\nDigite a idade da pessoa: ");
     scanf("%d", &p->age);
     printf("\nDigite o peso da pessoa: ");
     scanf("%f", &p->feet);
-    prin("\nDigite a altura da pessoa: ");
+    printf("\nDigite a altura da pessoa: ");
     scanf("%f", &p->height);
     peopleInsert(p, l);
 }
@@ -30,7 +30,7 @@ void peopleInsert(people * p, list * l){
 }
 
 int cmp(char id, node * n1, node *n2){
-    if(id=="P" || id=="p"){
+    if(id=='P' || id=='p'){
         if(n2!=NULL){
             people *p1=n1->elemen;
             people *p2=n2->elemen;
@@ -59,7 +59,7 @@ void peopleSearch(list *l){
 }
 
 int compareAges(int age, void * elem, char id){
-    if(id=="P" || id=="p"){
+    if(id=='P' || id=='p'){
         people *p=elem;
         if(p->age==age){
             return 1;
@@ -75,12 +75,12 @@ int compareAges(int age, void * elem, char id){
 }
 
 void printPeople(char id, void *elem){
-    if(id == "P" || id=="p"){
+    if(id == 'P' || id=='p'){
         people *p = elem;
         printf("\nNome: %s", p->name);
         printf("\nIdade: %d", p->age);
-        printf("\nPeso: ", p->feet);
-        printf("\nAltura: ", p->height);
+        printf("\nPeso: %f", p->feet);
+        printf("\nAltura: %f", p->height);
     }
     else{
         printf("\nDigite mais sentenças! ");

@@ -1,4 +1,4 @@
-#include "people.h"
+#include "lista.h"
 
 //Função para Iniciar a lista e atribuir um NULL pra o primeiro e ultimo nó;
 list * listInitialized(){
@@ -12,7 +12,7 @@ node * nodeInitialized(){
     node *n= (node *)malloc(sizeof(node));
     n->elemen=NULL;
     n->prox=NULL;
-    n->id="\0";
+    n->id='\0';
 }
 
 void chainElement(node * current, node * prev, node *newNode, int(*comp)(char, node *, node *)){

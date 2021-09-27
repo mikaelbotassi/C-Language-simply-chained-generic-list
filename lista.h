@@ -6,7 +6,7 @@
 #define _LISTA_H
 
 typedef struct Node{
-    node * prox;
+    struct Node * prox;
     void * elemen;
     char id;
 }node;
