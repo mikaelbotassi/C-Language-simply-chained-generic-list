@@ -24,7 +24,7 @@ void peopleData(list * l){
 
 void peopleInsert(people * p, list * l){
     char c;
-    printf("\nDigite a chave do tipo de variável: ");
+    printf("\nDigite a chave do tipo de variavel: ");
     scanf("%s", &c);
     push(c,l, p, cmp);
 }
@@ -42,7 +42,7 @@ int cmp(char id, node * n1, node *n2){
             }
         }
         else{
-            return 1;
+            return 0;
         }
     }
     else{
@@ -85,4 +85,8 @@ void printPeople(char id, void *elem){
     else{
         printf("\nDigite mais sentenças! ");
     }
+}
+
+void printAllList(list *l){
+    printList(l, printPeople);
 }

@@ -19,5 +19,6 @@ int cmp(char id, node * n1, node *n2);
 void peopleSearch(list *l);
 int compareAges(int age, void * elem, char id);
 void printPeople(char id, void *elem);
+void printAllList(list *l);
 
 #endif

@@ -24,5 +24,6 @@ void listSearch(list * l, int age, int(*cmpAge)(int age, void *elem, char id), v
 void pop(list *l, node * n);
 void freeList(list *l);
 void freeNode(node * n);
+void printList(list *l, void(*print)(char id, void *elem));
 
 #endif

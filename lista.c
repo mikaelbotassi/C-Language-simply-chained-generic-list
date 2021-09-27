@@ -13,15 +13,7 @@ node * nodeInitialized(){
     n->elemen=NULL;
     n->prox=NULL;
     n->id='\0';
-}
-
-void chainElement(node * current, node * prev, node *newNode, int(*comp)(char, node *, node *)){
-    while(comp(newNode->id, newNode, current)==0){
-        prev=current;
-        current=prev->prox;
-    }
-    prev->prox=newNode;
-    newNode->prox=current;
+    return n;
 }
 
 void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
@@ -31,12 +23,31 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
     if(l->first==NULL){
         l->first=newNode;
         l->last=newNode;
+        newNode->prox=NULL;
     }
     else{
         node *current=l->first;
         node * prev = NULL;
 
-        chainElement(current, prev, newNode, comp);
+        while(comp(newNode->id, newNode, current)){
+            prev=current;
+            current=prev->prox;
+        }
+        if(prev==NULL){//Se previous igual a NULL significa que o elemento é o primeiro da lista
+            newNode->prox=l->first;
+            l->first=newNode;
+        }
+        else{
+            if(current==NULL){
+                l->last->prox=newNode;
+                l->last=newNode;
+                l->last->prox=NULL;
+            }
+            else{
+                prev->prox=newNode;
+                newNode->prox=current;
+            }
+        }
     }
 }
 
@@ -95,4 +106,17 @@ void freeNode(node * n){
     }
 
 
+}
+
+void printList(list *l, void(*print)(char id, void *elem)){
+    node *aux=l->first;
+    if(aux==NULL){
+        printf("Lista Vazia! ");
+    }
+    else{   
+        while(aux!=NULL){
+            print(aux->id, aux->elemen);
+            aux=aux->prox;
+        }
+    }
 }

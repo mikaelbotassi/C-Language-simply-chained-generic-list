@@ -1,22 +1,29 @@
-CC=gcc
-CFLAGS=-lm
-FLAGS=-c -Wall -Wextra -Werror
-OBJ=main.o lista.o people.o
+CC = gcc
+flags = -c -Wall
+CFLAGS = -lm
+ARQUIVOS = *.o
+OBJS = lista.o people.o main.o
+EXE = main
+MAIN = main.c
 
-all: $(OBJ)
-	$(CC) $(OBJ) -o main $(CFLAGS)
+all: lista.o people.o main.o
+	$(CC) $(OBJS) -o $(EXE)
 
 main.o: main.c
-	$(CC) $(FLAGS) main.c $(CFLAGS)
+	$(CC) $(flags) $(MAIN) $(CFLAGS)
 
 lista.o: lista.c
-	$(CC) $(FLAGS) lista.c $(CFLAGS)
+	$(CC) $(flags) lista.c $(CFLAGS)
 
 people.o: people.c
-	$(CC) $(FLAGS) people.c $(CFLAGS)
+	$(CC) $(flags) people.c $(CFLAGS)
 
 run:
 	./main
 
+listar:
+	ls $(ARQUIVOS)
+
 clean:
-	rm -f *.o main
+	rm -f *.o
+	rm -f $(EXE)
