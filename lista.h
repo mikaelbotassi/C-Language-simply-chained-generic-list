@@ -18,7 +18,6 @@ typedef struct List{
 
 list * listInitialized();
 node * nodeInitialized();
-void chainElement(node * current, node * prev, node *newNode, int(*comp)(char, node *, node *));
 void push(char id,list * l, void * elem, int(*comp)(char, node *, node *));
 void listSearch(list * l, int age, int(*cmpAge)(int age, void *elem, char id), void(*print)(char id, void *elem));
 void pop(list *l, node * n);

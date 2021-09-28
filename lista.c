@@ -83,9 +83,21 @@ void pop(list *l, node *n){
             prev=current;
             current=prev->prox;
         }
-        node *aux = current;
-        prev->prox=current->prox;
-        free(aux);
+        if(current==l->first){
+            l->first=current->prox;
+            free(current);
+        }
+        else{
+            if(current==l->last){
+                prev->prox=NULL;
+                l->last=prev;
+                free(current);
+            }
+            else{
+                prev->prox=current->prox;
+                free(current);
+            }
+        }
     }
 }
 
