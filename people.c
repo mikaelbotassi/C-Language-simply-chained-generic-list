@@ -1,16 +1,25 @@
 #include "people.h"
 
-void peopleInitialized(people *p){
-    p=(people *)malloc(sizeof(people));
+people * peopleInitialized(){
+    people * p=(people *)malloc(sizeof(people));
     p->age=0;
     p->feet=0.0;
     p->height=0.0;
     strcpy(p->name, "\0");
+    return p;
 }
 
-void peopleData(list * l){
-    people * p;
-    peopleInitialized(p);
+void start(list *l){
+    int res=1;
+    while(res!=0){
+        peopleInsert(l);
+        printf("Deseja Inserir mais uma pessoa?Digite '1' para sim e '0' para não: ");
+        scanf("%d", &res);
+    }
+}
+
+void peopleInsert(list * l){
+    people * p = peopleInitialized();
     printf("Digite o nome da pessoa: ");
     scanf(" %50[^\n]", &p->name);
     printf("\nDigite a idade da pessoa: ");
@@ -19,21 +28,14 @@ void peopleData(list * l){
     scanf("%f", &p->feet);
     printf("\nDigite a altura da pessoa: ");
     scanf("%f", &p->height);
-    peopleInsert(p, l);
+    push('P',l, p, cmp);
 }
 
-void peopleInsert(people * p, list * l){
-    char c;
-    printf("\nDigite a chave do tipo de variavel: ");
-    scanf("%s", &c);
-    push(c,l, p, cmp);
-}
-
-int cmp(char id, node * n1, node *n2){
+int cmp(char id, void * n1, void *n2){
     if(id=='P' || id=='p'){
         if(n2!=NULL){
-            people *p1=n1->elemen;
-            people *p2=n2->elemen;
+            people *p1=n1;
+            people *p2=n2;
             if(p1->age>p2->age){
                 return 1;
             }
@@ -81,6 +83,8 @@ void printPeople(char id, void *elem){
         printf("\nIdade: %d", p->age);
         printf("\nPeso: %f", p->feet);
         printf("\nAltura: %f", p->height);
+        printf("\n");
+
     }
     else{
         printf("\nDigite mais sentenças! ");

@@ -2,7 +2,7 @@
 
 int main(){
     list *l=listInitialized();
-    peopleData(l);
+    start(l);
     printAllList(l);
 
     return 0;

@@ -16,7 +16,7 @@ node * nodeInitialized(){
     return n;
 }
 
-void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
+void push(char id,list *l, void *elem, int(*comp)(char, void *, void *)){
     node *newNode=nodeInitialized();
     newNode->elemen=elem;
     newNode->id=id;
@@ -26,10 +26,11 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
         newNode->prox=NULL;
     }
     else{
+        printf("Estive aqui!");
         node *current=l->first;
         node * prev = NULL;
 
-        while(comp(newNode->id, newNode, current)){
+        while(comp(id, newNode->elemen, current->elemen)){
             prev=current;
             current=prev->prox;
         }

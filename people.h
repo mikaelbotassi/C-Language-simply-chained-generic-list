@@ -12,10 +12,10 @@ typedef struct People{
     float feet;
 }people;
 
-void peopleInitialized();
-void peopleInsert(people * p, list * l);
-void peopleData(list * l);
-int cmp(char id, node * n1, node *n2);
+void start(list *l);
+people * peopleInitialized();
+void peopleInsert(list * l);
+int cmp(char id, void * n1, void *n2);
 void peopleSearch(list *l);
 int compareAges(int age, void * elem, char id);
 void printPeople(char id, void *elem);
