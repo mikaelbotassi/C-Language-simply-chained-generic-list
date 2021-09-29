@@ -13,7 +13,7 @@ void start(list *l){
     int res=1;
     while(res!=0){
         peopleInsert(l);
-        printf("Deseja Inserir mais uma pessoa?Digite '1' para sim e '0' para não: ");
+        printf("Deseja Inserir mais uma pessoa?Digite '1' para sim e '0' para nao: ");
         scanf("%d", &res);
     }
 }
@@ -55,7 +55,7 @@ int cmp(char id, node * n1, node *n2){
 
 void peopleSearch(list *l){
     int age;
-    printf("\nQual a idade da pessoa que você quer procurar? ");
+    printf("\nQual a idade da pessoa que voce quer procurar? ");
     scanf("%d", &age);
     listSearch(l, age, compareAges, printPeople);
 }
@@ -72,7 +72,7 @@ int compareAges(int age, void * elem, char id){
     }
     else{
         printf("\nDigite outras sentenças aqui!");
-        return -1;
+        return 0;
     }
 }
 

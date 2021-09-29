@@ -53,15 +53,23 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
 
 void listSearch(list * l, int age, int(*cmpAge)(int age, void *elem, char id), void(*print)(char id, void *elem)){
     node *aux = l->first;
-    if(aux!=NULL){
-        printf("\nLista Vazia!");
+    char resp;
+    if(aux==NULL){
+        printf("\nLista Vazia!\n");
     }
     else{
         while(aux!=NULL){
-            if(cmpAge(age, aux->elemen, aux->id)==1){
+            if(cmpAge(age, aux->elemen, aux->id)){
                 print(aux->id, aux->elemen);
-                printf("Deseja excluir o elemento? ");
-                pop(l, aux);
+                printf("Deseja excluir o elemento?Digite 's' para sim e 'n' para nao: ");
+                scanf(" %c", &resp);
+                if(resp=='s'){
+                    pop(l, aux);
+                    break;
+                }
+                else{
+                    break;
+                }
             }
             else{
                 aux=aux->prox;
