@@ -110,21 +110,10 @@ void pop(list *l, node *n){
 }
 
 void freeList(list *l){
-    freeNode(l->first);
-
-}
-
-void freeNode(node * n){
-    if(n==NULL){
-        printf("\nLista vazia! ");
+    while(l->first!=NULL){
+        node * aux=l->first;
+        pop(l,aux);
     }
-    else{
-        node * aux = n->prox;
-        n->prox=NULL;
-        free(n);
-        freeNode(aux);
-    }
-
 
 }
 

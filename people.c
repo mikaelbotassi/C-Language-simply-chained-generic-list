@@ -92,5 +92,10 @@ void printPeople(char id, void *elem){
 }
 
 void printAllList(list *l){
-    printList(l, printPeople);
+    if(l->first==NULL){
+        printf("Lista vazia!\n");
+    }
+    else{
+        printList(l, printPeople);
+    }
 }

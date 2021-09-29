@@ -6,6 +6,9 @@ int main(){
     printAllList(l);
     peopleSearch(l);
     printAllList(l);
+    freeList(l);
+    printAllList(l);
+    printAllList(l);
 
     return 0;
 }
