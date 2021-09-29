@@ -8,7 +8,6 @@ int main(){
     printAllList(l);
     freeList(l);
     printAllList(l);
-    printAllList(l);
 
     return 0;
 }

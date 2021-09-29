@@ -15,7 +15,9 @@ node * nodeInitialized(){
     n->id='\0';
     return n;
 }
-
+/*
+O push recebe o tipo de dado que irá armazenar no ID, o elemento e um ponteiro de função da biblioteca pessoa cujo nome é "cmp"
+*/
 void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
     node *newNode=nodeInitialized();
     newNode->elemen=elem;
@@ -26,6 +28,9 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
         l->last=newNode;
     }
     else{
+    /*Estes são os ponteiros para percorrer a
+    lista, o current(atual) começa do primeiro elemento da lista e o anterior começa do
+    NULL e vão percorrendo a lista*/
         node *current=l->first;
         node * prev = NULL;
 
@@ -50,7 +55,10 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
         }
     }
 }
-
+/*
+Percorre a lista procurando elemento que possui a altura igual o elemento atual da busca,
+a comparação é feita através da função CompareAge(Procure na biblioteca people)
+*/
 void listSearch(list * l, int age, int(*cmpAge)(int age, void *elem, char id), void(*print)(char id, void *elem)){
     node *aux = l->first;
     char resp;
@@ -78,7 +86,9 @@ void listSearch(list * l, int age, int(*cmpAge)(int age, void *elem, char id), v
     }
 
 }
-
+/*
+    Função que tira um determinado elemento da lista, usa o mesmo metódo de percorrer a lista que o push.
+*/
 void pop(list *l, node *n){
     if(l->first==NULL){
         printf("\nLista Vazia!\n");
@@ -91,17 +101,17 @@ void pop(list *l, node *n){
             prev=current;
             current=prev->prox;
         }
-        if(current==l->first){
+        if(current==l->first){ //Se for o primeiro elemento da lista
             l->first=current->prox;
             free(current);
         }
         else{
-            if(current==l->last){
+            if(current==l->last){ //Se for o último elemento da lista
                 prev->prox=NULL;
                 l->last=prev;
                 free(current);
             }
-            else{
+            else{ //Se for um elemento do meio da lista
                 prev->prox=current->prox;
                 free(current);
             }
