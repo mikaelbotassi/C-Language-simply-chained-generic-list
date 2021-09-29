@@ -14,6 +14,7 @@ typedef struct Node{
 typedef struct List{
     node *first;
     node *last;
+    int tam;
 }list;
 
 list * listInitialized();

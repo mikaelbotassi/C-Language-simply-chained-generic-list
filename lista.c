@@ -5,6 +5,7 @@ list * listInitialized(){
     list *l= (list *)malloc(sizeof(list));
     l->first=NULL;
     l->last=NULL;
+    l->tam=0;
     return l;
 }
 
@@ -54,6 +55,7 @@ void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
             }
         }
     }
+    l->tam++;
 }
 /*
 Percorre a lista procurando elemento que possui a altura igual o elemento atual da busca,
@@ -117,6 +119,7 @@ void pop(list *l, node *n){
             }
         }
     }
+    l->tam--;
 }
 
 void freeList(list *l){
