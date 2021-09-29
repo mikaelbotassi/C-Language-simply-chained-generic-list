@@ -16,21 +16,20 @@ node * nodeInitialized(){
     return n;
 }
 
-void push(char id,list *l, void *elem, int(*comp)(char, void *, void *)){
+void push(char id,list *l, void *elem, int(*comp)(char, node *, node *)){
     node *newNode=nodeInitialized();
     newNode->elemen=elem;
     newNode->id=id;
     if(l->first==NULL){
+        newNode->prox=NULL;
         l->first=newNode;
         l->last=newNode;
-        newNode->prox=NULL;
     }
     else{
-        printf("Estive aqui!");
         node *current=l->first;
         node * prev = NULL;
 
-        while(comp(id, newNode->elemen, current->elemen)){
+        while(comp(id, newNode, current)){
             prev=current;
             current=prev->prox;
         }
@@ -39,12 +38,12 @@ void push(char id,list *l, void *elem, int(*comp)(char, void *, void *)){
             l->first=newNode;
         }
         else{
-            if(current==NULL){
+            if(current==NULL){//Se current igual a NULL signifca que o elemento será o último da lista
                 l->last->prox=newNode;
                 l->last=newNode;
                 l->last->prox=NULL;
             }
-            else{
+            else{//Se não for nenhum dos casos acima, signifca que vai inserir no meio da lista
                 prev->prox=newNode;
                 newNode->prox=current;
             }

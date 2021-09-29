@@ -15,7 +15,7 @@ typedef struct People{
 void start(list *l);
 people * peopleInitialized();
 void peopleInsert(list * l);
-int cmp(char id, void * n1, void *n2);
+int cmp(char id, node * n1, node *n2);
 void peopleSearch(list *l);
 int compareAges(int age, void * elem, char id);
 void printPeople(char id, void *elem);

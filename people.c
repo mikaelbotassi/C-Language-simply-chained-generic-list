@@ -31,11 +31,11 @@ void peopleInsert(list * l){
     push('P',l, p, cmp);
 }
 
-int cmp(char id, void * n1, void *n2){
+int cmp(char id, node * n1, node *n2){
     if(id=='P' || id=='p'){
         if(n2!=NULL){
-            people *p1=n1;
-            people *p2=n2;
+            people *p1=n1->elemen;
+            people *p2=n2->elemen;
             if(p1->age>p2->age){
                 return 1;
             }
